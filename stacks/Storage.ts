@@ -1,6 +1,7 @@
-import { StackContext, Table } from "@serverless-stack/resources";
+import { StackContext, Table, Bucket } from "@serverless-stack/resources";
 
-export function Database({ stack }: StackContext) {
+export function Storage({ stack }: StackContext) {
+
   const table = new Table(stack, "table", {
     fields: {
       pk: "string",
@@ -20,5 +21,10 @@ export function Database({ stack }: StackContext) {
     },
   });
 
-  return table;
+  const bucket = new Bucket(stack, "Uploads");
+
+  return {
+          table,
+          bucket
+        };
 }

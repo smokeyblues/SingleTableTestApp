@@ -3,17 +3,17 @@ import {
   use,
   Api as ApiGateway,
 } from "@serverless-stack/resources";
-import { Database } from "./Database";
+import { Storage } from "./Storage";
 
 export function Api({ stack }: StackContext) {
-  const db = use(Database);
+  const storage = use(Storage);
 
   const api = new ApiGateway(stack, "api", {
     defaults: {
       function: {
-        permissions: [db],
+        permissions: [storage.table],
         environment: {
-          TABLE_NAME: db.tableName,
+          TABLE_NAME: storage.table.tableName,
         },
       },
     },

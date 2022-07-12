@@ -1,6 +1,6 @@
 import { App } from "@serverless-stack/resources";
 import { Api } from "./Api";
-import { Database } from "./Database";
+import { Storage } from "./Storage";
 import { Web } from "./Web";
 
 export default function main(app: App) {
@@ -8,5 +8,5 @@ export default function main(app: App) {
     runtime: "nodejs16.x",
     srcPath: "services",
   });
-  app.stack(Database).stack(Api).stack(Web);
+  app.stack(Storage).stack(Api).stack(Web);
 }
