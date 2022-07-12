@@ -1,0 +1,19 @@
+type Chapter {
+  id: String!
+  text: String!
+}
+
+type Idea {
+  chapters: [Chapter!]!
+  content: ID!
+  id: ID!
+}
+
+type Mutation {
+  addChapter(ideaID: String!, text: String!): Chapter!
+  createIdea(content: String!): Idea!
+}
+
+type Query {
+  ideas: [Idea!]!
+}
